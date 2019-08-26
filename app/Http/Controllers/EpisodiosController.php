@@ -8,26 +8,30 @@ use Illuminate\Http\Request;
 
 class EpisodiosController extends Controller
 {
-    public function index (Temporada $temporada)
+    public function index(Temporada $temporada, Request $request)
     {
-       return view('episodios.index' , [
-           'episodios'=>$temporada->episodios,
-           'temporadaId'=>$temporada->id
-    ]);
+        $episodios = $temporada->episodios;
+        $temporadaId = $temporada->id;
+        $mensagem = $request->session()->get('mensagem');
+
+        return view(
+            'episodios.index',
+            compact('episodios', 'temporadaId', 'mensagem')
+        );
     }
 
-    public function assistir (Temporada $temporada, Request $request)
+    public function assistir(Temporada $temporada, Request $request)
     {
-        $episodiosAssistidos=$request->episodios;
-        $temporada->episodios->each(function (Episodio $episodio)
-            use ($episodiosAssistidos){
-            $episodio-> assistido = in_array(
+        $idsEpisodiosAssistidos = array_keys($request->episodio);
+        $temporada->episodios->each(function (Episodio $episodio) use($idsEpisodiosAssistidos) {
+            $episodio->assistido = in_array(
                 $episodio->id,
-                $episodiosAssistidos
+                $idsEpisodiosAssistidos
             );
+        });
+        $temporada->push();
+        $request->session()->flash('mensagem', 'Episódios marcados como assistidos');
 
-    });
-    $temporada->push();
-
+        return redirect('/temporadas/' . $temporada->id . '/episodios');
     }
 }
