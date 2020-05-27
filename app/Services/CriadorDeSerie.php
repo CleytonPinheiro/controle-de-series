@@ -34,6 +34,10 @@ class CriadorDeSerie
         }
     }
 
+    /**
+     * @param int $epPorTemporada
+     * @param \Illuminate\Database\Eloquent\Model $temporada
+     */
     private function criaEpisodios(int $epPorTemporada, \Illuminate\Database\Eloquent\Model $temporada): void
     {
         for ($j = 1; $j <= $epPorTemporada; $j++) {

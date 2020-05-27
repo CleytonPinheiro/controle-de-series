@@ -1,5 +1,5 @@
-@if (!empty($mensagem))
+@if(!empty($mensagem))
     <div class="alert alert-success">
-        {{$mensagem}}
+        {{ $mensagem }}
     </div>
- @endif
+@endif

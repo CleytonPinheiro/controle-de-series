@@ -17,5 +17,4 @@
         </li>
         @endforeach
     </ul>
-
 @endsection

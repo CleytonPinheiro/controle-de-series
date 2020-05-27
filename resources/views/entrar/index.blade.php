@@ -5,7 +5,7 @@
 @endsection
 
 @section('conteudo')
-    @include('erros',['erros'=>$errors])
+    @include('erros', ['errors' => $errors])
 
     <form method="post">
         @csrf
