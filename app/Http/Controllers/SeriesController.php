@@ -41,18 +41,23 @@ class SeriesController extends Controller
         );
 
         $users = User::all();
-        foreach ($users as $user){
+        foreach ($users as $i => $user){
 
+            $multiplicador  = $i + 1;
             $email = new NovaSerie(
                 $request->nome,
                 $request->qtd_temporadas,
                 $request->ep_por_temporada
             );
             $email->subject ='Nova série adicionada';
-            \Illuminate\Support\Facades\Mail::to($user)->send($email);
-            sleep(1);
-        }
 
+            //Para não reconhecer o e-mail como span
+            $quando = now()->addSecond($multiplicador * 10);
+            \Illuminate\Support\Facades\Mail::to($user)->later(
+                $quando,
+                $email);
+            //sleep(5);
+        }
         //$user = $request->user();
         //dd($user);
 
