@@ -24,7 +24,7 @@ class NovaSerie extends Mailable
     {
         $this->nome = $nome;
         $this->qtdTemporadas = $qtdTemporadas;
-        $this->qtdEpisodios = $qtdEpisodios;
+        $this->qtdTemporadas = $qtdEpisodios;
     }
 
     /**

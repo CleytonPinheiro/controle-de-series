@@ -40,7 +40,6 @@ Route::get('/enviando-email', function () {
 
     Illuminate\Support\Facades\Mail::to($user)->send($email);
     return 'Email enviado!';
-
 });
 
 Route::get('/series', 'SeriesController@index')
