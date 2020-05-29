@@ -6,7 +6,7 @@ use App\Events\NovaSerie;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class LogNovaSerieCadastrada
+class LogNovaSerieCadastrada implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -15,7 +15,7 @@ class LogNovaSerieCadastrada
      */
     public function __construct()
     {
-
+        //
     }
 
     /**

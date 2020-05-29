@@ -21,8 +21,9 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         NovaSerie::class => [
-            EnviarEmailNovaSerieCadastrada::class,
-            \App\Listeners\EnviarEmailNovaSerieCadastrada::class
+            //Associando listener ao evento para execução em fila forma assíncrona
+            \EnviarEmailNovaSerieCadastrada::class,
+            \App\Listeners\LogNovaSerieCadastrada::class
         ]
     ];
 
