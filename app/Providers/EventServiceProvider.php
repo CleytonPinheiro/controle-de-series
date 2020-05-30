@@ -25,6 +25,10 @@ class EventServiceProvider extends ServiceProvider
             //Associando listener ao evento para execução em fila forma assíncrona
             \App\Listeners\EnviarEmailNovaSerieCadastrada::class,
             \App\Listeners\LogNovaSerieCadastrada::class
+        ],
+        //Executando de forma síncrona(no momento da exclusão)
+        \App\Events\SerieApagada::class => [
+            \App\Listeners\ExcluirCapaSerie::class
         ]
     ];
 
