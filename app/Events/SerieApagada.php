@@ -10,17 +10,18 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\Serie;
+use phpDocumentor\Reflection\Types\Object_;
 
 class SerieApagada
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var Serie
+     * @var object
      */
     public $serie;
 
-    public function __construct(Serie $serie)
+    public function __construct(object $serie)
     {
         $this->serie = $serie;
     }

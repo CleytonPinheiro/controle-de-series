@@ -14,6 +14,8 @@ class RemovedorDeSerie
             $serie = Serie::find($serieId);
             $nomeSerie = $serie->nome;
 
+            $serieObj = (object) $serie->toArray();
+
             $this->removerTemporadas($serie);
             $serie->delete();
 
