@@ -21,17 +21,17 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        /*
+
         NovaSerie::class => [
             //Associando listener ao evento para execução em fila forma assíncrona
             \App\Listeners\EnviarEmailNovaSerieCadastrada::class,
             \App\Listeners\LogNovaSerieCadastrada::class
-        ],
-        */
+        ]/*,
+
         //Executando de forma síncrona(no momento da exclusão)
         \App\Events\SerieApagada::class => [
             \App\Listeners\ExcluirCapaSerie::class
-        ]
+        ]*/
     ];
 
     /**
