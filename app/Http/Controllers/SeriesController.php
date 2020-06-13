@@ -20,6 +20,7 @@ class SeriesController extends Controller
         $series = Serie::query()
             ->orderBy('nome')
             ->get();
+
         $mensagem = $request->session()->get('mensagem');
 
         return view('series.index', compact('series', 'mensagem'));
